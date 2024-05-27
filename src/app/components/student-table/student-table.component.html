@@ -1,0 +1,15 @@
+<p>student-table works!</p>
+<table class="table">
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Edad</th>
+      </tr>
+    <tbody>
+        <tr *ngFor="let students of infoStudents">
+            <th scope="row">{{students.id}}</th>
+            <td>{{students.nombre}}</td>
+            <td>{{students.edad}}</td>
+        </tr>
+    </tbody>
+</table>

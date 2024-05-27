@@ -16,7 +16,11 @@ export class BackendService {
 
    //Esto permite hacer la conexion con el localhost:4041 con el /estudiantes lo que traerá un array de los estudiantes que se encuentran en la base de datos
    //usando el método get
-  conection(): Observable<any>{
-    return this.http.get(this.myAppUrl + "/estudiantes")
+  getStudents(): Observable<any>{
+    return this.http.get(this.myAppUrl + "/getStudents")
+  }
+
+  postStudents(data:any):Observable<any>{
+    return this.http.post(this.myAppUrl + "/createStudent",data)
   }
 }
