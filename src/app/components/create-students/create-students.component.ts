@@ -9,7 +9,7 @@ import { BackendService } from 'src/app/service/backend.service';
   styleUrls: ['./create-students.component.css']
 })
 export class CreateStudentsComponent {
-  dataStudents!:any
+  dataStudents!:FormGroup
 
   constructor(private fb:FormBuilder,private backend:BackendService){
     this.dataStudents = this.fb.group({
@@ -23,7 +23,7 @@ export class CreateStudentsComponent {
       nombre: this.dataStudents.get('nombre')!.value,
       edad: this.dataStudents.get('edad')!.value
     };
-    this.backend.postStudents(data).subscribe(data => {
+    this.backend.postStudent(data).subscribe(data => {
       console.log(data)
       location.reload()
     })

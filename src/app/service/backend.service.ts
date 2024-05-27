@@ -7,7 +7,8 @@ import { environment } from '../Environment/environment';
   providedIn: 'root'
 })
 export class BackendService {
-
+  dataUpdate:any
+  dataDelete:any
   myAppUrl:any
 
   constructor(private http:HttpClient) {
@@ -16,11 +17,24 @@ export class BackendService {
 
    //Esto permite hacer la conexion con el localhost:4041 con el /estudiantes lo que traerá un array de los estudiantes que se encuentran en la base de datos
    //usando el método get
-  getStudents(): Observable<any>{
+  getStudent(): Observable<any>{
     return this.http.get(this.myAppUrl + "/getStudents")
   }
 
-  postStudents(data:any):Observable<any>{
+  postStudent(data:any):Observable<any>{
     return this.http.post(this.myAppUrl + "/createStudent",data)
+  }
+
+  updateStudent(id:number, nombre:string, edad:number):Observable<any>{
+    this.dataUpdate = {
+      id:id,
+      nombre:nombre,
+      edad:edad
+    }
+    return this.http.put(this.myAppUrl + "/updateStudent",this.dataUpdate)
+  }
+
+  deleteStudent(id:any): Observable<any>{
+    return this.http.delete(this.myAppUrl + "/deleteStudent", { body: { id: id } })
   }
 }
