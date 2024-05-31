@@ -1,6 +1,6 @@
 Implementación de un CRUD de estudiantes hecho en JavaScript, el framework angular, node js, y postgresql
 
-**Integrantes**
+#**Integrantes**
 Noah Esteban Narváez Jung, Cristián Camilo Mejía, Santiago Gallego
 
 **Marco teórico**
