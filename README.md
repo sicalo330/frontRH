@@ -94,29 +94,105 @@ Instalar linux ubuntu 22.04
 1. **Instalar Linux Ubuntu 22.04**:
    - Es necesario hacer una partición en el disco duro o disco de estado sólido.
    - Luego, tener un instalador de Ubuntu, conectarlo al PC, reiniciarlo y entrar a la BIOS para instalar el sistema operativo.
-
+   - Configurar las opciones necesarias y finalizar la instalación de ubuntu
 ---
+2. **Instalar docker**:
+   - Actualizar la lista de paquetes con: sudo apt update
+   - Instalar prerequisitos para docker con:sudo apt install apt-transport-https ca-certificates curl software-properties-common
+   - Añadir la clave GPG(En el contexto de la instalación de Docker en Ubuntu, agregar la clave GPG del repositorio oficial de Docker permite verificar la autenticidad y la integridad de los paquetes descargados desde ese repositorio) con este comando: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+   - Agregar el repositorio de Docker a las fuentes de APT significa informar al sistema de gestión de paquetes de Ubuntu (APT) sobre la ubicación del repositorio oficial de Docker para que pueda descargar e instalar los paquetes de Docker desde allí. con este comando: sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
 
-## Otras secciones
+   - sudo apt-cache policy docker-ce
+   - Con lo anterior algo así debería salir:
+   docker-ce:
+      Installed: (none)
+      Candidate: 5:19.03.9~3-0~ubuntu-focal
+      Version table:
+         5:19.03.9~3-0~ubuntu-focal 500
+            500 https://download.docker.com/linux/ubuntu focal/stable amd64 Packages
+   - Instalar docker definitivamente: sudo apt install docker-ce
+   - Verificar el estado de docker:sudo systemctl status docker
+   - Con lo anterior, algo así debe salir:
+    docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Tue 2020-05-19 17:00:41 UTC; 17s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 24321 (dockerd)
+      Tasks: 8
+     Memory: 46.4M
+     CGroup: /system.slice/docker.service
+             └─24321 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
 
-### Configuración inicial
+3. **Instalar PostgreSQL para ubuntu**:
+**Nota: Tener en cuenta que hasta la fecha no hay una interfaz gráfica conocida o de fácil instalación para postgresql en ubuntu 20.04 o 22.04, por lo tanto se hará uso de la línea de comandos**
+- sudo apt update
+- sudo apt install postgresql postgresql-contrib
+. sudo systemctl start postgresql.service
+- Para ejecutar postgresql desde la línea de comandosm usar este comando:sudo -u postgres psql
 
-Instrucciones para la configuración inicial después de instalar Ubuntu.
+4. **Instalar nodejs para ubuntu**:
+- sudo apt update
+- sudo apt install nodejs (No recomandado, ya que en nuestro caso instala una versión predeterminada y muy vieja para el momento en que se escribe este readme)
+Para evitar el problema de versionamiento del punto anterior, haremos uso de nvm(node version manager)
+- Instalar el repositorio: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh
+- curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+- source ~/.bashrc
+- Para ver la lista de versiones que tiene nvm para que se instale, nvm list-remote, algo así debería salir:
+Output
+. . .
+        v18.0.0
+        v18.1.0
+        v18.2.0
+        v18.3.0
+        v18.4.0
+        v18.5.0
+        v18.6.0
+        v18.7.0
+        v18.8.0
+        v18.9.0
+        v18.9.1
+       v18.10.0
+       v18.11.0
+       v18.12.0   (LTS: Hydrogen)
+       v18.12.1   (LTS: Hydrogen)
+       v18.13.0   (Latest LTS: Hydrogen)
+        v19.0.0
+        v19.0.1
+        v19.1.0
+        v19.2.0
+        v19.3.0
+        v19.4.0
+- nvm install vnumero.numero.numero (Ejemplo: nvm install v14.10.0),a lgo así debería salir:
+Output
+->     v14.10.0
+       v14.21.2
+default -> v14.10.0
+iojs -> N/A (default)
+unstable -> N/A (default)
+node -> stable (-> v14.21.2) (default)
+stable -> 14.21 (-> v14.21.2) (default)
+. . .
 
----
+5. **Instalar angular para ubuntu**:
+- Instalar la última vesión de angular, en este caso la versión 17 con este comando: npm install -g @angular/cli
+- usar 'ng version' para ver si se instaló correctamente
+- por si acaso usar node -v y npm -v por si algo, si no están instalados es recomandable hacerlo
 
-### Instalación de software adicional
+# **Crear base de datos con postgresql**
 
-Pasos para instalar software adicional en Ubuntu.
+- Ejecutar este comando para iniciar la ejecución de postgresql: sudo -u postgres psql
+- Crear la base de datos, CREATE DATABASE nombre_base_de_datos;
+- Para conectarse o hacer uso de la base de datos, usar este comando: \c nombre_base_de_datos;
+- CREATE TABLE mi_tabla (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100),
+    edad INT
+);
 
----
-
-### Solución de problemas
-
-Guía para solucionar problemas comunes durante la instalación.
 
 
-2. **Instalar PostgreSQL para ubuntu**:
+
 
 
 https://developer.mozilla.org/es/docs/Web/JavaScript
@@ -125,6 +201,7 @@ https://www.hackaboss.com/blog/diferencias-javascript-java
 https://es.wikipedia.org/wiki/Angular_(framework)
 https://es.wikipedia.org/wiki/PostgreSQL
 https://aws.amazon.com/es/what-is/restful-api/
-
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
+https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04
 
 
