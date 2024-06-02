@@ -325,6 +325,7 @@ Toma el método planteado anteriormente, para agregarlo en el archivo del contro
 ![Estructura inicial del proyecto angular](./Imagenes/runDev.png)
 
 Para compilar el código es necesario agregar la línea al package json, **Nota: la terminal debe estar dentro de la raíz para que le comando se ejecute bien**
+Posteriormente agregar el comando **npm run dev**
 
 
 # **Referencias**
