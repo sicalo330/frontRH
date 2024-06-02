@@ -252,19 +252,20 @@ Lo que hace el boton crear estudiante, es tomar la información del formulario c
 # Eliminar estudiantes
 
 En la tabla estudiantes, el boton eliminar obtiene la id del estudiante y se envía a nodejs para eliminar el estudiante correspondiente a la id
+
 ![Estructura inicial del proyecto angular](./Imagenes/codigoEliminar.png)
 
 
 
 # **Referencias**
 
-https://developer.mozilla.org/es/docs/Web/JavaScript
-https://www.freecodecamp.org/espanol/news/ventajas-y-desventajas-de-javascript/
-https://www.hackaboss.com/blog/diferencias-javascript-java
-https://es.wikipedia.org/wiki/Angular_(framework)
-https://es.wikipedia.org/wiki/PostgreSQL
-https://aws.amazon.com/es/what-is/restful-api/
-https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
-https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04
+- https://developer.mozilla.org/es/docs/Web/JavaScript
+- https://www.freecodecamp.org/espanol/news/ventajas-y-desventajas-de-javascript/
+- https://www.hackaboss.com/blog/diferencias-javascript-java
+- https://es.wikipedia.org/wiki/Angular_(framework)
+- https://es.wikipedia.org/wiki/PostgreSQL
+- https://aws.amazon.com/es/what-is/restful-api/
+- https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
+- https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04
 
 
