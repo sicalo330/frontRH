@@ -191,7 +191,8 @@ stable -> 14.21 (-> v14.21.2) (default)
 );
 
 # **Estructura del proyecto**
-https://content.nationalgeographic.com.es/medio/2023/11/29/golden-retriever-corriendo_7a50f15e_231129131211_800x800.jpg
+![UN texto de un perro](./Imagenes/perro.jpg)
+
 
 
 
