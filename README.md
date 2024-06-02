@@ -191,12 +191,185 @@ stable -> 14.21 (-> v14.21.2) (default)
 );
 
 # **Estructura del proyecto**
-![UN texto de un perro](./Imagenes/perro.jpg)
+![Estructura inicial del proyecto angular](./Imagenes/EstructuraProyecto.png)
+
+# **Funcionalidad del código**
+- Instalar bootstrap con: npm install bootstrap y adicionalmente añadir @import "~bootstrap/dist/css/bootstrap.min.css"; en style.css
+- Instalar angular/common/http para el uso de HttpClientModule: npm install @angular/common@latest
+- Instalar angular material: ng add @angular/material
+- Instalar angular/cdk: npm i @angular/cdk
+
+Nota: usar: **ng s** en la terminal para compilar el proyecto
+
+# **Conexión a la api hecha en node js con servicios de angular**
+![Estructura inicial del proyecto angular](./Imagenes/serviceAngular.png)
+
+Estos son los servicios que se usan en angular para conectar a ĺa api de nodejs(Framework cuyo readme se encuentra haciendo click aquí:https://github.com/sicalo330/finalOSBackend)
+
+# **Tabla de estudiantes**
+
+# Obtener estudiantes
+
+A continuación el html que le da la estructura a la tabla que obtiene la inforamación de los estudiantes
+
+<table class="table">
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Eliminar</th>
+      </tr>
+    <tbody>
+        <tr *ngFor="let students of infoStudents">
+            <th scope="row">{{students.id}}</th>
+            <td>{{students.nombre}}</td>
+            <td>{{students.edad}}</td>
+            <td><button class="btn btn-warning" (click)="openEdit(students)">Editar</button></td>
+            <td><button class="btn btn-danger" (click)="deleteStudent(students.id)">Eliminar</button></td>
+        </tr>
+    </tbody>
+</table>
+
+La función ngOnInit, se llama inmediantamente cuando la aplicación cargué completamente, lo que hace es acceder a la api de node js y hace una consulta 'select * from estudiantes' para obtener una lista de estudiantes, que está representado con data, este último es asignado a una variable llamada infoStudents, este es un array de arrrays que contienen los datos de los estudiantes de la base de datos, se utiliza *ngFor para ciclar en cada array y añadir lso datos, por ejemplo {{students.nobre}}
+
+  ngOnInit(): void {
+    this.backend.getStudent().subscribe(data => {
+      this.infoStudents = data;
+    })
+  }
+
+# Editar estudiantes
+
+**Nota:**Como se puede ver en el html, hay dos botones uno para editar y otro para eliminar, la función de editar llama a una función llamada openEdit()
+
+  openEdit(student:any){
+    console.log(student)
+    const dialogRef = this.dialog.open(EditStudentComponent,{
+      data: {
+        id: student.id,
+        nombre: student.nombre,
+        edad:student.edad,
+      }
+    })
+  }
+
+Open Edit abre un modal de angular para añadir los campos de nombre y edad, se envian los datos del estudiante al que se le hizo click al comoponente edit-student, el método open(EditStudentComponent) envía los datos al componente indicado
 
 
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { BackendService } from 'src/app/service/backend.service';
+
+@Component({
+  selector: 'app-edit-student',
+  templateUrl: './edit-student.component.html',
+  styleUrls: ['./edit-student.component.css']
+})
+export class EditStudentComponent implements OnInit {
+  dataPutStudent!:FormGroup
+
+  constructor(private fb:FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any, private backend:BackendService){
+    this.dataPutStudent = this.fb.group({
+      nombre:['', Validators.required],
+      edad:['', Validators.required]
+    })
+  }
+}
+@Inject lo que hace es traer los datos cuando se abre el modal, para que se muestren en los inputs del modal
+
+<form action="" [formGroup]="dataPutStudent">
+    <div class="form-group col-md-4 w-100">
+        <label for="exampleInputNombre">Nombre</label>
+        <input type="text" class="form-control" id="exampleInputNombre" formControlName="nombre">
+        <span class="danger" *ngIf="dataPutStudent.get('nombre')!.invalid && dataPutStudent.get('nombre')!.touched">La descripción es <strong>obligatoria</strong></span>
+    </div>
+    <div class="form-group col-md-4 w-100">
+        <label for="exampleInputEdad">Edad</label>
+        <input type="number" class="form-control" id="exampleInputEdad" formControlName="edad">
+        <span class="danger" *ngIf="dataPutStudent.get('edad')!.invalid && dataPutStudent.get('edad')!.touched">La descripción es <strong>obligatoria</strong></span>
+    </div>
+    <button (click)="updateStudent()">Edit</button>
+</form>
+
+Este es el formulario que le da estructura al formulario del modal que se abre cuando se da al boton actualizar en la tabla de estudiantes, el boton edit llama a la función updateStudent()
+
+  updateStudent(){
+    const dataUpdate: any = {
+      nombre: this.dataPutStudent.get('nombre')!.value,
+      edad: this.dataPutStudent.get('edad')!.value,
+    }
+    this.backend.updateStudent(this.data.id, dataUpdate.nombre, dataUpdate.edad).subscribe(data => {
+      location.reload()
+    })
+  }
+
+Lo que hace updateStudent() es enviar los datos como nombre y edad junto con el id del estudiante para hacer una actualización de la información del estudiante.
+
+# Crear estudiantes
+
+<form method="post" [formGroup]="dataStudents">
+    <div class="form-group col-md-4">
+        <label for="exampleInputNombre">Nombre</label>
+        <input type="text" class="form-control" id="exampleInputNombre" formControlName="nombre">
+        <span class="danger" *ngIf="dataStudents.get('nombre')!.invalid && dataStudents.get('nombre')!.touched">La descripción es <strong>obligatoria</strong></span>
+    </div>
+    <div class="form-group col-md-4">
+        <label for="exampleInputEdad">Edad</label>
+        <input type="number" class="form-control" id="exampleInputEdad" formControlName="edad">
+        <span class="danger" *ngIf="dataStudents.get('edad')!.invalid && dataStudents.get('edad')!.touched">La descripción es <strong>obligatoria</strong></span>
+    </div>
+    <button class="btn btn-primary" (click)="createStudent()">Create</button>
+</form>
+
+import { Component } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Student } from 'src/app/model/Student';
+import { BackendService } from 'src/app/service/backend.service';
+
+@Component({
+  selector: 'app-create-students',
+  templateUrl: './create-students.component.html',
+  styleUrls: ['./create-students.component.css']
+})
+export class CreateStudentsComponent {
+  dataStudents!:FormGroup
+
+  constructor(private fb:FormBuilder,private backend:BackendService){
+    this.dataStudents = this.fb.group({
+      nombre:['', Validators.required],
+      edad:['', Validators.required]
+    })
+  }
+
+  createStudent(){
+    const data: Student = {
+      nombre: this.dataStudents.get('nombre')!.value,
+      edad: this.dataStudents.get('edad')!.value
+    };
+    this.backend.postStudent(data).subscribe(data => {
+      console.log(data)
+      location.reload()
+    })
+  }
+}
 
 
+Lo que hace el boton crear estudiante, es tomar la información del formulario creado con las librería FormBuilder, FormGroup y Validators, al obtener todos los datos estos se envían a node js para insertarlos en la base de datos, y por lógica, al cargar la página una vez más se hace una llamada a la base de datos para obtener la información, esto hace parecer que se agregó la información de forma inmediata
 
+# Eliminar estudiantes
+
+En la tabla estudiantes, el boton eliminar obtiene la id del estudiante y se envía a nodejs para eliminar el estudiante correspondiente a la id
+  deleteStudent(id:any){
+    this.backend.deleteStudent(id).subscribe(data => {
+      console.log(data)
+      location.reload()
+    })
+  }
+  
+
+# **Referencias**
 
 https://developer.mozilla.org/es/docs/Web/JavaScript
 https://www.freecodecamp.org/espanol/news/ventajas-y-desventajas-de-javascript/
