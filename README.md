@@ -220,6 +220,13 @@ La función ngOnInit, se llama inmediantamente cuando la aplicación cargué com
 ![Estructura inicial del proyecto angular](./Imagenes/ngOnInit.png)
 
 
+![Estructura inicial del proyecto angular](./Imagenes/obtenerEstudiantesNOde.png)
+El servicio de angular hace una conexión a la URL localhost:4041/getStudents en la carpeta que contiene las rutas de nodejs, se hace un llamado a una función llamada getStudents
+
+![Estructura inicial del proyecto angular](./Imagenes/getStudentsNode.png)
+
+Como se puede apreciar, se obtienen los datos con req.body y con esos datos se hace una consulta con el query SELECT * FROM estudiantes; que llama a postgresql a hacer dicha consulta
+
 # Editar estudiantes
 
 **Nota:**Como se puede ver en el html, hay dos botones uno para editar y otro para eliminar, la función de editar llama a una función llamada openEdit()
@@ -240,7 +247,18 @@ Open Edit abre un modal de angular para añadir los campos de nombre y edad, se 
 Este es el formulario que le da estructura al formulario del modal que se abre cuando se da al boton actualizar en la tabla de estudiantes, el boton edit llama a la función updateStudent()
 ![Estructura inicial del proyecto angular](./Imagenes/codigoActualizar.png)
 
+Este hace un llamdo a los servicios de angular y se conecta al localhost:4041/updateStudent
+
 Lo que hace updateStudent() es enviar los datos como nombre y edad junto con el id del estudiante para hacer una actualización de la información del estudiante.
+
+![Estructura inicial del proyecto angular](./Imagenes/updateRutaNode.png)
+
+Se hace un llamado a la función updateStudent
+
+![Estructura inicial del proyecto angular](./Imagenes/updateStudentNode.png)
+
+Este método llama postgresql a hacer un UPDATE de la base de datos tomando datos como el nombre, la edad y la id del estudiante al que se desea actualizar los datos,
+
 
 # Crear estudiantes
 
@@ -249,12 +267,64 @@ Lo que hace updateStudent() es enviar los datos como nombre y edad junto con el 
 
 Lo que hace el boton crear estudiante, es tomar la información del formulario creado con las librería FormBuilder, FormGroup y Validators, al obtener todos los datos estos se envían a node js para insertarlos en la base de datos, y por lógica, al cargar la página una vez más se hace una llamada a la base de datos para obtener la información, esto hace parecer que se agregó la información de forma inmediata
 
+![Estructura inicial del proyecto angular](./Imagenes/createRutaNode.png)
+
+Se hace la llamada a la función createStudent
+
+![Estructura inicial del proyecto angular](./Imagenes/createStudentNode.png)
+
+Se hace una inserción a la base de datos de posgresql con INSERT
+
+
 # Eliminar estudiantes
 
 En la tabla estudiantes, el boton eliminar obtiene la id del estudiante y se envía a nodejs para eliminar el estudiante correspondiente a la id
 
 ![Estructura inicial del proyecto angular](./Imagenes/codigoEliminar.png)
 
+![Estructura inicial del proyecto angular](./Imagenes/deleteRutaNode.png)
+
+La ruta deleteStudent hace un llamado a la función del mismo nombre
+
+![Estructura inicial del proyecto angular](./Imagenes/deleteStudentNode.png)
+
+Obtiene la id del estudiante para usar DELETE para borrar el registro de ese estudiante mediante su id
+
+# **Crear entorno para Nodejs**
+
+crear una carpeta llama src para un mejor orden y dentro crear app.js e index.js, similar a lo que se verá
+
+![Estructura inicial del proyecto angular](./Imagenes/estructuraNode.png)
+
+- instalar las dependencias con este comando: npm install @babel/core@^7.24.6 @babel/node@^7.24.6 @babel/preset-env@^7.24.6 babel@^6.23.0 babel-cli@^6.26.0 bootstrap@^5.3.3 cors@^2.8.5 dotenv@^16.4.5 express@^4.19.2 mssql@^10.0.2 mysql@^2.18.1 nodemon@^3.1.1 pg@^8.11.5
+
+![Estructura inicial del proyecto angular](./Imagenes/appNode.png)
+
+- Es necesario importar las dependencias necesarias entre ellas express, este le da mayores características a nodejs, como el manejo de rutas y métodos GET, POST, PUT, DELETE
+- Cors: Permite que un sitio web solicite y reciba datos de otro sitio web, incluso si ambos sitios web tienen diferentes dominios (por ejemplo, https://www.ejemplo.com y https://www.otroejemplo.com)
+- La otra importanción son las rutas que se manejaron anteriormente
+
+Se crea una instancia de Express llamada app, este va a usar cors y las rutas ya mencionadas, se le asigna un puerto, en este caso el puerto 4041 y se exporta, yua que app se usará en inde.js
+
+![Estructura inicial del proyecto angular](./Imagenes/indexNode.png)
+
+index.js lo que hace es decirle que a app.js que escuche en el puerto 4041 y de paso un console.log() para decirle al desarrollador que la conexión se hizo de forma satisfactoria
+
+![Estructura inicial del proyecto angular](./Imagenes/babelNode.png)
+
+Esto permite a nodejs identificar las nomenclaturas viejas o modernas de javaScript como la importación ES6 sin errores de código
+
+![Estructura inicial del proyecto angular](./Imagenes/DBnode.png)
+
+Esto permite a node conectarse con postgresql añadiendo las credenciales como el nombre del usuario, la contraseña, el nombre de la base de datos, etc
+
+![Estructura inicial del proyecto angular](./Imagenes/controllerNode.png)
+
+Toma el método planteado anteriormente, para agregarlo en el archivo del controlodor, lo que hace este, es simplemente conectar definitivamente la app a postgresql, de esta forma podrá hacer las consultas o acciones a la base de datos   
+
+![Estructura inicial del proyecto angular](./Imagenes/runDev.png)
+
+Para compilar el código es necesario agregar la línea al package json, **Nota: la terminal debe estar dentro de la raíz para que le comando se ejecute bien**
 
 
 # **Referencias**
