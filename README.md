@@ -327,6 +327,13 @@ Toma el método planteado anteriormente, para agregarlo en el archivo del contro
 Para compilar el código es necesario agregar la línea al package json, **Nota: la terminal debe estar dentro de la raíz para que le comando se ejecute bien**
 Posteriormente agregar el comando **npm run dev**
 
+# Cómo correr el contenedor frontend**
+
+**Para ello es necesario tener docker y angular instalado, posteriormente hay que tener el archivo dockerFile o como mínimo tener el contenedor en la pc y ejecutar el siguiente comando**
+
+- docker run -p puertoPc:puertoDocker nombreContenedor
+- Ejemplo: dokcer run -p 4200:4200 sicalo330/finalosfront
+
 
 # **Referencias**
 
