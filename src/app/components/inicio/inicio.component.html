@@ -96,10 +96,10 @@
                   <span
                     class="badge"
                     [ngClass]="{
-                      'bg-primary': candidate.estado == 'Entrevista',
-                      'bg-warning text-dark': candidate.estado == 'Pendiente',
-                      'bg-success': candidate.estado == 'Aprobado',
-                      'bg-danger': candidate.estado == 'Rechazado'
+                        'bg-primary': candidate.estado == 'Entrevista' || candidate.estado == 'Evaluando',
+                        'bg-warning text-dark': candidate.estado == 'Pendiente',
+                        'bg-success': candidate.estado == 'Aprobado' || candidate.estado == 'Completo',
+                        'bg-danger': candidate.estado == 'Rechazado' || candidate.estado == 'A mejorar'
                     }">
                     {{ candidate.estado }}
                   </span>

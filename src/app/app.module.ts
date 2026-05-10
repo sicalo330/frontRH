@@ -14,6 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { EditCandidateComponent } from './components/edit-candidate/edit-candidate.component';
 import { NominaComponent } from './components/nomina/nomina.component';
+import { EvaluacionComponent } from './components/evaluacion/evaluacion.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NominaComponent } from './components/nomina/nomina.component';
     HeaderComponent,
     InicioComponent,
     EditCandidateComponent,
-    NominaComponent
+    NominaComponent,
+    EvaluacionComponent
   ],
   imports: [
     BrowserModule, 

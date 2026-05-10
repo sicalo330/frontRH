@@ -26,6 +26,10 @@ export class HeaderComponent {
   verNomina(){
     this.router.navigate(['nomina'])
   }
+
+  verEvaluacin(){
+    this.router.navigate(['evaluacion'])
+  }
   
   createCandidate(){
     this.router.navigate(['createCandidates'])
