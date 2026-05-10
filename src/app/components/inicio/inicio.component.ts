@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BackendService } from 'src/app/service/backend.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EditCandidateComponent } from '../edit-candidate/edit-candidate.component';
 
 @Component({
   selector: 'app-inicio',
@@ -16,7 +18,7 @@ export class InicioComponent {
   aprobados: number = 0
   descartados: number = 0
 
-  constructor(private router:Router, private backend:BackendService){}
+  constructor(private router:Router, private backend:BackendService, public dialog: MatDialog){}
 
   ngOnInit(): void {
 
@@ -35,12 +37,29 @@ export class InicioComponent {
       ).length
 
       this.descartados = this.listCandidates.filter(
-        c => c.estado == 'Descartado'
+        c => c.estado == 'Rechazado'
       ).length
     }, error => {
       console.log(error)
     })
 
+  }
+
+  editCandidate(candidate:any){
+    const dialogRef = this.dialog.open(EditCandidateComponent, {width: '600px',data: candidate})
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.ngOnInit()
+      }
+    })
+  }
+
+  deleteCandidate(id:number){
+    this.backend.deleteCandidate(id).subscribe(data => {
+      if(data == 'ok'){
+        location.reload()
+      }
+    })
   }
 
 }

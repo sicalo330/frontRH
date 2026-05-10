@@ -26,17 +26,16 @@ export class BackendService {
     return this.http.post(this.myAppUrl + "/createCandidate",data)
   }
 
-  updateStudent(id:number, nombre:string, edad:number):Observable<any>{
+  updateCand(id:number, body:any ):Observable<any>{
     this.dataUpdate = {
       id:id,
-      nombre:nombre,
-      edad:edad
+      body:body
     }
     return this.http.put(this.myAppUrl + "/updateStudent",this.dataUpdate)
   }
 
-  deleteStudent(id:any): Observable<any>{
-    return this.http.delete(this.myAppUrl + "/deleteStudent", { body: { id: id } })
+  deleteCandidate(id:any): Observable<any>{
+    return this.http.delete(this.myAppUrl + "/deleteCandidate", { body: { id: id } })
   }
 
   login(data:any): Observable<any>{

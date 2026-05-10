@@ -99,13 +99,15 @@
                       'bg-primary': candidate.estado == 'Entrevista',
                       'bg-warning text-dark': candidate.estado == 'Pendiente',
                       'bg-success': candidate.estado == 'Aprobado',
-                      'bg-danger': candidate.estado == 'Descartado'
+                      'bg-danger': candidate.estado == 'Rechazado'
                     }">
                     {{ candidate.estado }}
                   </span>
                 </td>
                 <td>
                   <button class="btn btn-sm btn-outline-light">Ver</button>
+                  <button class="btn btn-sm btn-outline-light" (click)="editCandidate(candidate)">Editar</button>
+                  <button class="btn btn-sm btn-outline-light" (click)="deleteCandidate(candidate.id)">Eliminar</button>
                 </td>
               </tr>
             </tbody>
