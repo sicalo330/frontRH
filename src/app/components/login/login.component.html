@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row justify-content-center main-container">
+      <div class="border p-2">
+        <div class="card-header">Login</div>
+      </div>
+      <div class="border">
+        <form method="post" [formGroup]="datosUsuario" (ngSubmit)="enviarDatos()">
+          <div class="form-group">
+            <label for="exampleInputCorreo">Correo</label>
+            <input type="email" class="form-control" id="exampleInputCorreo" formControlName="correo">
+            <span class="danger" *ngIf="datosUsuario.get('correo')!.invalid && datosUsuario.get('correo')!.touched">La Identificación es <strong>Obligatoria</strong></span>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputContrasena">Contraseña</label>
+            <input type="password" class="form-control" id="exampleInputContrasena" formControlName="contrasena">
+            <span class="danger" *ngIf="datosUsuario.get('contrasena')!.invalid && datosUsuario.get('contrasena')!.touched">La Contraseña es <strong>Obligatoria</strong></span>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary mt-2 mb-2">Enviar datos</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>

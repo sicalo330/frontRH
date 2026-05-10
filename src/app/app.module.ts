@@ -6,17 +6,22 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
-import { StudentTableComponent } from './components/student-table/student-table.component';
 import { CreateStudentsComponent } from './components/create-students/create-students.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditStudentComponent } from './components/edit-student/edit-student.component';
+import { LoginComponent } from './components/login/login.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HeaderComponent } from './components/header/header.component';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentTableComponent,
     CreateStudentsComponent,
-    EditStudentComponent
+    EditStudentComponent,
+    LoginComponent,
+    HeaderComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule, 
@@ -24,7 +29,8 @@ import { EditStudentComponent } from './components/edit-student/edit-student.com
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

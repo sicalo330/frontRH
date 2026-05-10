@@ -17,12 +17,13 @@ export class BackendService {
 
    //Esto permite hacer la conexion con el localhost:4041 con el /estudiantes lo que traerá un array de los estudiantes que se encuentran en la base de datos
    //usando el método get
-  getStudent(): Observable<any>{
-    return this.http.get(this.myAppUrl + "/getStudents")
+  getCandidate(): Observable<any>{
+    return this.http.get(this.myAppUrl + "/getCandidate")
   }
 
-  postStudent(data:any):Observable<any>{
-    return this.http.post(this.myAppUrl + "/createStudent",data)
+  createCandidate(data:any):Observable<any>{
+    console.log(data)
+    return this.http.post(this.myAppUrl + "/createCandidate",data)
   }
 
   updateStudent(id:number, nombre:string, edad:number):Observable<any>{
@@ -36,5 +37,9 @@ export class BackendService {
 
   deleteStudent(id:any): Observable<any>{
     return this.http.delete(this.myAppUrl + "/deleteStudent", { body: { id: id } })
+  }
+
+  login(data:any): Observable<any>{
+    return this.http.post(this.myAppUrl + "/login",data)
   }
 }
