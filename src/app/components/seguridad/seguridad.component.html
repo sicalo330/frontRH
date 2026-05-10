@@ -4,7 +4,7 @@
 
   <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
-        <h1 class="fw-bold mb-1 display-6">Nómina</h1>
+        <h1 class="fw-bold mb-1 display-6">Seguridad</h1>
         <p class="text-secondary mb-0">Gestión de hojas de vida, entrevistas y filtros de perfil</p>
     </div>
     <div class="date-badge">20 Abril 2026</div>
@@ -13,34 +13,32 @@
   <div class="row g-4 mb-4">
     <div class="col-md-3">
       <div class="custom-card text-center">
-        <!-- <div class="icon-placeholder mb-2">📄</div> -->
-
-          <div class="icon blue">📄</div>
-        <p class="card-label">Total a pagar</p>
+        <div class="icon">📄</div>
+        <p class="card-label">Afiliaciones activas</p>
         <h1 class="card-value">{{enEvaluacion}}</h1>
       </div>
     </div>
 
     <div class="col-md-3">
       <div class="custom-card text-center">
-        <div class="icon">👥</div>
-        <p class="card-label">Colaboradores</p>
+        <div class="icon">⏳</div>
+        <p class="card-label">Afiliaciones pendientes</p>
         <h1 class="card-value">{{enEntrevista}}</h1>
       </div>
     </div>
 
     <div class="col-md-3">
       <div class="custom-card text-center">
-        <div class="icon">✅</div>
-        <p class="card-label">Aprobados</p>
+        <div class="icon">🏥</div>
+        <p class="card-label">Exámens médicos próximos</p>
         <h1 class="card-value">{{aprobados}}</h1>
       </div>
     </div>
 
     <div class="col-md-3">
       <div class="custom-card text-center">
-        <div class="icon">❌</div>
-        <p class="card-label">Rechazados</p>
+        <div class="icon">🔄</div>
+        <p class="card-label">Por renovar</p>
         <h1 class="card-value">{{descartados}}</h1>
       </div>
     </div>
@@ -59,18 +57,30 @@
                 <thead>
                 <tr>
                     <th>Candidato</th>
-                    <th>Cargo</th>
-                    <th>Salario base</th>
-                    <th>Ajustes</th>
+                    <th>EPS</th>
+                    <th>ARL</th>
+                    <th>Caja</th>
+                    <th>Estado</th>
                     <th class="text-center">Detalles</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let candidate of filteredCandidates()">
                     <td class="fw-medium">{{ candidate.nombre }}</td>
-                    <td class="text-secondary">{{ candidate.cargo }}</td>
-                    <td>{{ candidate.salario | number }}</td>
-                    <td class="text-danger-custom">-{{ candidate.ajuste | number }}</td>
+                    <td class="text-secondary">{{ candidate.eps }}</td>
+                    <td>{{ candidate.arl }}</td>
+                    <td>{{ candidate.caja }}</td>
+                    <td>
+                      <span class="badge rounded-pill px-3 py-2"
+                          [ngClass]="{
+                          'bg-primary': candidate.estado == 'Entrevista' || candidate.estado == 'Evaluando',
+                          'bg-warning text-dark': candidate.estado == 'Pendiente' || candidate.estado == 'Sin ARL',
+                          'bg-success': candidate.estado == 'Aprobado' || candidate.estado == 'Completo',
+                          'bg-danger': candidate.estado == 'Rechazado' || candidate.estado == 'A mejorar'
+                          }">
+                          {{ candidate.estado }}
+                      </span>
+                    </td>
                     <td class="text-center">
                     <button class="btn btn-detail-outline" (click)="viewCandidate(candidate)">Ver</button>
                     </td>
@@ -91,17 +101,9 @@
           </div>
 
           <div class="detail-info mt-4">
-            <div class="d-flex justify-content-between mb-3 border-bottom-dark pb-2">
-                <span class="text-secondary">Total salario base:</span>
-                <span>{{selectedCandidate.salario | number}}</span>
-            </div>
-            <div class="d-flex justify-content-between mb-3 border-bottom-dark pb-2">
-                <span class="text-secondary">Ajuste:</span>
-                <span class="text-danger-custom">-{{selectedCandidate.ajuste | number}}</span>
-            </div>
-            <div class="d-flex justify-content-between pt-2">
-                <span class="fw-bold">Salario Neto:</span>
-                <span class="fw-bold text-success-custom">{{selectedCandidate.salario - selectedCandidate.ajuste | number}}</span>
+            <div class="d-flex gap-2 mt-3">
+                <button class="btn btn-success w-100" (click)="changeStatus('Completo')">Completo</button>
+                <button class="btn btn-warning w-100" (click)="changeStatus('Sin ARL')">Sin ARL</button>
             </div>
           </div>
       </div>

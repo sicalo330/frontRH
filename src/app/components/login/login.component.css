@@ -1,0 +1,98 @@
+/* Contenedor principal con fondo oscuro y brillo radial verde */
+.login-page {
+  background-color: #000;
+  background-image: radial-gradient(circle at center, #1a2a1a 0%, #000000 70%);
+  min-height: 100vh;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Logo RRHH */
+.logo-header {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* La tarjeta central */
+.login-card {
+  background-color: rgba(20, 20, 20, 0.8);
+  border: 1px solid #333;
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.login-title {
+  text-align: center;
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+/* Etiquetas */
+.form-label {
+  display: block;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 8px;
+  color: #ccc;
+}
+
+/* Inputs oscuros y redondeados */
+.form-input {
+  background-color: #111 !important;
+  border: 1px solid #222;
+  border-radius: 10px;
+  color: white !important;
+  padding: 12px;
+  width: 100%;
+  text-align: center;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: #444;
+  box-shadow: 0 0 5px rgba(255,255,255,0.1);
+}
+
+/* Botón Iniciar */
+.btn-login {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: white;
+  padding: 8px 30px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #252525;
+  border-color: #444;
+}
+
+/* Link de olvido */
+.forgot-password {
+  color: #fff;
+  text-decoration: underline;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.forgot-password:hover {
+  opacity: 1;
+}
+
+/* Errores */
+.error-text {
+  color: #ff4d4d;
+  display: block;
+  text-align: center;
+  margin-top: 5px;
+  font-size: 0.75rem;
+}

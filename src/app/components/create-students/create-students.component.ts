@@ -22,6 +22,9 @@ export class CreateStudentsComponent {
       estado:['', Validators.required],
       salario:['', Validators.required],
       ajuste:['', Validators.required],
+      eps:['', Validators.required],
+      arl:['', Validators.required],
+      caja:['', Validators.required]
     })
   }
 
@@ -35,6 +38,9 @@ export class CreateStudentsComponent {
       estado: this.dataCandidates.get('estado')!.value,
       salario: this.dataCandidates.get('salario')!.value,
       ajuste: this.dataCandidates.get('ajuste')!.value,
+      eps: this.dataCandidates.get('eps')!.value,
+      arl: this.dataCandidates.get('arl')!.value,
+      caja: this.dataCandidates.get('caja')!.value
     };
 
     if(data.puntaje > 100){

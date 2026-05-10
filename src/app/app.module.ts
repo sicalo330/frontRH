@@ -15,6 +15,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { EditCandidateComponent } from './components/edit-candidate/edit-candidate.component';
 import { NominaComponent } from './components/nomina/nomina.component';
 import { EvaluacionComponent } from './components/evaluacion/evaluacion.component';
+import { SeguridadComponent } from './components/seguridad/seguridad.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EvaluacionComponent } from './components/evaluacion/evaluacion.componen
     InicioComponent,
     EditCandidateComponent,
     NominaComponent,
-    EvaluacionComponent
+    EvaluacionComponent,
+    SeguridadComponent
   ],
   imports: [
     BrowserModule, 

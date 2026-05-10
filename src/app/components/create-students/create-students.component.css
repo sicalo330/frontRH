@@ -1,0 +1,67 @@
+/* Reutilizamos los estilos del login que ya tienes */
+
+.login-page {
+  background-color: #000;
+  background-image: radial-gradient(circle at center, #1a2a1a 0%, #000000 70%);
+  min-height: 100vh;
+  color: white;
+}
+
+.login-card {
+  background-color: rgba(20, 20, 20, 0.85);
+  border: 1px solid #333;
+  border-radius: 25px;
+  padding: 50px;
+  backdrop-filter: blur(10px); /* Efecto de cristal esmerilado */
+}
+
+/* Estilo para los Selects */
+.select-dark {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 16px 12px;
+}
+
+.select-dark option {
+  background-color: #111;
+  color: white;
+}
+
+/* Centrado de Labels similar a tu login */
+.form-label {
+  display: block;
+  text-align: center;
+  color: #aaa;
+  font-weight: 500;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.form-input {
+  background-color: #111 !important;
+  border: 1px solid #222;
+  border-radius: 12px;
+  color: white !important;
+  padding: 12px;
+  width: 100%;
+  text-align: center;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.form-input:focus {
+  border-color: #3e5c3e; /* Verde oscuro sutil al enfocar */
+  box-shadow: 0 0 10px rgba(62, 92, 62, 0.2);
+}
+
+.error-text {
+  color: #ff4d4d;
+  display: block;
+  text-align: center;
+  margin-top: 5px;
+  font-size: 0.75rem;
+}

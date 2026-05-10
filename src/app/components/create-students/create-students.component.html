@@ -1,48 +1,127 @@
 <app-header></app-header>
-<form method="post" [formGroup]="dataCandidates">
-    <div class="form-group col-md-4">
-        <label for="exampleInputNombre">Nombre</label>
-        <input type="text" class="form-control" id="exampleInputNombre" formControlName="nombre">
-        <span class="danger" *ngIf="dataCandidates.get('nombre')!.invalid && dataCandidates.get('nombre')!.touched">La descripción es <strong>obligatoria</strong></span>
+
+<div class="login-page d-flex justify-content-center align-items-center py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-8">
+        
+        <div class="login-card w-100">
+          <h2 class="login-title">Crear Nuevo Candidato</h2>
+
+          <form [formGroup]="dataCandidates" (ngSubmit)="createStudent()" class="row g-4">
+            
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-input" formControlName="nombre">
+                <small class="error-text" *ngIf="dataCandidates.get('nombre')!.invalid && dataCandidates.get('nombre')!.touched">
+                  El nombre es obligatorio
+                </small>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-label">Correo electrónico</label>
+                <input type="email" class="form-input" formControlName="correo">
+                <small class="error-text" *ngIf="dataCandidates.get('correo')!.invalid && dataCandidates.get('correo')!.touched">
+                  El correo es obligatorio
+                </small>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="form-label">Cargo</label>
+                <input type="text" class="form-input" formControlName="cargo">
+                <small class="error-text" *ngIf="dataCandidates.get('cargo')!.invalid && dataCandidates.get('cargo')!.touched">
+                  El cargo es obligatorio
+                </small>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="form-label">Experiencia (años)</label>
+                <input type="number" class="form-input" formControlName="experiencia">
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="form-label">Puntaje</label>
+                <input type="number" class="form-input" formControlName="puntaje">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-label">Salario Base</label>
+                <input type="number" class="form-input" formControlName="salario">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-label">Ajuste</label>
+                <input type="number" class="form-input" formControlName="ajuste">
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="form-label">Estado Inicial</label>
+                <select class="form-input select-dark" formControlName="estado">
+                  <option value="">Seleccione...</option>
+                  <option value="Entrevista">Entrevista</option>
+                  <option value="Pendiente">Pendiente</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="form-label">EPS</label>
+                <select class="form-input select-dark" formControlName="eps">
+                  <option value="">Seleccione...</option>
+                  <option value="Sura">Sura</option>
+                  <option value="Nueva EPS">Nueva EPS</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="form-label">ARL</label>
+                <select class="form-input select-dark" formControlName="arl">
+                  <option value="">Seleccione...</option>
+                  <option value="Positiva">Positiva</option>
+                  <option value="Colmena">Colmena</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-group text-center">
+                <label class="form-label">Caja de Compensación</label>
+                <select class="form-input select-dark w-50 m-auto" formControlName="caja">
+                  <option value="">Seleccione...</option>
+                  <option value="Comfemaico">Comfenalco</option>
+                  <option value="Comfama">Comfama</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-12 text-center mt-5">
+              <button type="submit" class="btn-login px-5" [disabled]="dataCandidates.invalid">
+                Crear Candidato
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
     </div>
-    <div class="form-group col-md-4">
-        <label for="exampleInputEdad">Correo</label>
-        <input type="email" class="form-control" id="exampleInputCorreo" formControlName="correo">
-        <span class="danger" *ngIf="dataCandidates.get('correo')!.invalid && dataCandidates.get('correo')!.touched">La descripción es <strong>obligatoria</strong></span>
-    </div>
-    <div class="form-group col-md-4">
-        <label for="exampleInputEdad">cargo</label>
-        <input type="text" class="form-control" id="exampleInputEdad" formControlName="cargo">
-        <span class="danger" *ngIf="dataCandidates.get('cargo')!.invalid && dataCandidates.get('cargo')!.touched">La descripción es <strong>obligatoria</strong></span>
-    </div>
-    <div class="form-group col-md-4">
-        <label for="exampleInputEdad">experiencia</label>
-        <input type="number" class="form-control" id="exampleInputexperiencia" formControlName="experiencia">
-        <span class="danger" *ngIf="dataCandidates.get('experiencia')!.invalid && dataCandidates.get('experiencia')!.touched">La descripción es <strong>obligatoria</strong></span>
-    </div>
-    <div class="form-group col-md-4">
-        <label for="exampleInputEdad">puntaje</label>
-        <input type="number" class="form-control" id="exampleInputpuntaje" formControlName="puntaje">
-        <span class="danger" *ngIf="dataCandidates.get('puntaje')!.invalid && dataCandidates.get('puntaje')!.touched">La descripción es <strong>obligatoria</strong></span>
-    </div>
-    <div class="form-group col-md-4">
-        <label for="exampleInputEstado">Estado</label>
-        <select class="form-control" id="exampleInputEstado" formControlName="estado">
-            <option value="">Seleccione un estado</option>
-            <option value="Entrevista">Entrevista</option>
-            <option value="Pendiente">Pendiente</option>
-        </select>
-        <span class="danger" *ngIf="dataCandidates.get('estado')!.invalid && dataCandidates.get('estado')!.touched"> El estado es <strong>obligatorio</strong></span>
-    </div>
-    <div class="form-group col-md-4">
-        <label for="exampleInputEdad">Salario</label>
-        <input type="number" class="form-control" id="exampleInputpuntaje" formControlName="salario">
-        <span class="danger" *ngIf="dataCandidates.get('salario')!.invalid && dataCandidates.get('salario')!.touched">La descripción es <strong>obligatoria</strong></span>
-    </div>
-    <div class="form-group col-md-4">
-        <label for="exampleInputEdad">Ajuste</label>
-        <input type="number" class="form-control" id="exampleInputpuntaje" formControlName="ajuste">
-            <span class="danger" *ngIf="dataCandidates.get('ajuste')!.invalid && dataCandidates.get('ajuste')!.touched">La descripción es <strong>obligatoria</strong></span>
-    </div>
-    <button class="btn btn-primary" (click)="createStudent()">Create</button>
-</form>
+  </div>
+</div>

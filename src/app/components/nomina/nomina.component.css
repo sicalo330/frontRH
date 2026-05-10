@@ -1,0 +1,178 @@
+/* Efecto de fondo similar a la primera imagen */
+.main-bg-effect {
+    background: radial-gradient(circle at top right, #0a150a 0%, #000000 40%) !important;
+}
+
+/* Estilo de la fecha */
+.date-badge {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+}
+
+/* Cards Superiores */
+.custom-card {
+    background-color: #0d0d0d;
+    border: 1px solid #222;
+    border-radius: 20px;
+    padding: 30px 20px;
+    transition: transform 0.3s ease;
+}
+
+.custom-card:hover {
+    transform: translateY(-5px);
+    border-color: #444;
+}
+
+.card-label {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.card-value {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Buscador */
+.search-container {
+    background: #0d0d0d;
+    border: 1px solid #222;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    color: white;
+    width: 100%;
+    padding: 8px 15px;
+    outline: none;
+}
+
+/* Paneles de Contenido */
+.content-panel {
+    background-color: #0d0d0d;
+    border: 1px solid #222;
+    border-radius: 20px;
+    padding: 25px;
+}
+
+/* Tabla Personalizada */
+.table-dark-custom {
+    color: rgb(171, 32, 32);
+    border-collapse: separate;
+    border-spacing: 0 8px;
+}
+
+.table-dark-custom thead th {
+    border: none;
+    color: #666;
+    font-weight: 400;
+    text-transform: none;
+}
+
+.table-dark-custom tbody tr {
+    background-color: #141414;
+}
+
+.table-dark-custom td {
+    padding: 15px;
+    border: none;
+}
+
+/* Botones y Progress */
+.btn-detail-outline {
+    background: transparent;
+    border: 1px solid #fff;
+    color: white;
+    border-radius: 5px;
+    padding: 2px 12px;
+    font-size: 0.85rem;
+}
+
+.custom-progress-container {
+    background-color: #222;
+    height: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.custom-progress-bar {
+    background-color: #198754; /* Verde */
+    height: 100%;
+    border-radius: 10px;
+}
+
+.text-danger-custom { color: #ff4d4d; }
+.text-success-custom { color: #2ecc71; }
+.border-bottom-dark { border-bottom: 1px solid #222; }
+
+/* Forzar color de texto en toda la tabla */
+.table-dark-custom {
+    --bs-table-bg: transparent !important;
+    --bs-table-color: #ffffff !important; /* Fuerza el texto base a blanco */
+    color: #ffffff !important;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+/* Encabezados (Th) - Un gris claro para que no compitan con los datos */
+.table-dark-custom thead th {
+    background-color: transparent !important;
+    border: none !important;
+    color: #aaaaaa !important; /* Gris claro legible */
+    font-weight: 600;
+    text-transform: none;
+}
+
+/* Celdas (Td) - Blanco puro para los datos principales */
+.table-dark-custom tbody td {
+    color: #ffffff !important; 
+    padding: 15px !important;
+    border: none !important;
+}
+
+/* Clase específica para textos secundarios (como el Cargo) */
+.table-dark-custom .text-secondary {
+    color: #bbbbbb !important; /* Un gris un poco más claro que el de Bootstrap */
+}
+
+/* Ajuste para los números de Salario si se ven oscuros */
+.table-dark-custom td:nth-child(3) {
+    color: #ffffff !important;
+    font-weight: 500;
+}
+
+/* Mantener el color rojo de los ajustes pero brillante */
+.text-danger-custom {
+    color: #ff5f5f !important;
+    font-weight: 500;
+}
+
+/* El botón "Ver" para que resalte más */
+.btn-detail-outline {
+    background: transparent;
+    border: 1px solid #ffffff !important;
+    color: #ffffff !important;
+    border-radius: 6px;
+    padding: 4px 15px;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.btn-detail-outline:hover {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+.icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}

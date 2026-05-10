@@ -6,6 +6,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { CreateStudentsComponent } from './components/create-students/create-students.component';
 import { NominaComponent } from './components/nomina/nomina.component';
 import { EvaluacionComponent } from './components/evaluacion/evaluacion.component';
+import { SeguridadComponent } from './components/seguridad/seguridad.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'createCandidates', component: CreateStudentsComponent},
   { path: 'nomina', component: NominaComponent},
   { path: 'evaluacion', component: EvaluacionComponent},
+  { path: 'seguridad', component: SeguridadComponent},
 ];
 
 @NgModule({

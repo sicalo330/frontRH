@@ -30,6 +30,10 @@ export class HeaderComponent {
   verEvaluacin(){
     this.router.navigate(['evaluacion'])
   }
+
+  verSeguridad(){
+    this.router.navigate(['seguridad'])
+  }
   
   createCandidate(){
     this.router.navigate(['createCandidates'])
