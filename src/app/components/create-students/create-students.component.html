@@ -31,11 +31,18 @@
             <option value="">Seleccione un estado</option>
             <option value="Entrevista">Entrevista</option>
             <option value="Pendiente">Pendiente</option>
-            <option value="Aprobado">Aprobado</option>
-            <option value="Rechazado">Rechazado</option>
         </select>
         <span class="danger" *ngIf="dataCandidates.get('estado')!.invalid && dataCandidates.get('estado')!.touched"> El estado es <strong>obligatorio</strong></span>
-
+    </div>
+    <div class="form-group col-md-4">
+        <label for="exampleInputEdad">Salario</label>
+        <input type="number" class="form-control" id="exampleInputpuntaje" formControlName="salario">
+        <span class="danger" *ngIf="dataCandidates.get('salario')!.invalid && dataCandidates.get('salario')!.touched">La descripción es <strong>obligatoria</strong></span>
+    </div>
+    <div class="form-group col-md-4">
+        <label for="exampleInputEdad">Ajuste</label>
+        <input type="number" class="form-control" id="exampleInputpuntaje" formControlName="ajuste">
+            <span class="danger" *ngIf="dataCandidates.get('ajuste')!.invalid && dataCandidates.get('ajuste')!.touched">La descripción es <strong>obligatoria</strong></span>
     </div>
     <button class="btn btn-primary" (click)="createStudent()">Create</button>
 </form>

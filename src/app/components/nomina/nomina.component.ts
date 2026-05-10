@@ -1,31 +1,44 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { BackendService } from 'src/app/service/backend.service';
-import { MatDialog } from '@angular/material/dialog';
 import { EditCandidateComponent } from '../edit-candidate/edit-candidate.component';
 
 @Component({
-  selector: 'app-inicio',
-  templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css']
+  selector: 'app-nomina',
+  templateUrl: './nomina.component.html',
+  styleUrls: ['./nomina.component.css']
 })
-export class InicioComponent {
-
+export class NominaComponent {
+  searchText: string = ''
   listCandidates: any[] = []
+  selectedCandidate: any = null
 
   enEvaluacion: number = 0
   enEntrevista: number = 0
   aprobados: number = 0
   descartados: number = 0
-  selectedCandidate: any = null
 
-  constructor(private router:Router, private backend:BackendService, public dialog: MatDialog){}
+    constructor(private router:Router, private backend:BackendService, public dialog: MatDialog){}
 
-  ngOnInit(): void {
-    this.backend.getCandidate().subscribe(data => {
-      this.listCandidates = data
-      this.selectedCandidate = this.listCandidates[0]
-    })
+    ngOnInit(): void {
+      this.backend.getCandidate().subscribe(data => {
+        this.listCandidates = data
+        console.log(data)
+        this.selectedCandidate = this.listCandidates[0]
+      })
+    }
+
+  filteredCandidates(){
+    return this.listCandidates.filter(candidate =>
+      candidate.nombre.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      candidate.cargo.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      candidate.estado.toLowerCase().includes(this.searchText.toLowerCase())
+    )
+  }
+
+  viewCandidate(candidate:any){
+    this.selectedCandidate = candidate
   }
 
   editCandidate(candidate:any){
@@ -43,29 +56,6 @@ export class InicioComponent {
         location.reload()
       }
     })
-  }
-
-  updateCounters(){
-    this.enEvaluacion = this.listCandidates.filter(
-      c => c.estado == 'Pendiente'
-    ).length
-
-    this.enEntrevista = this.listCandidates.filter(
-      c => c.estado == 'Entrevista'
-    ).length
-
-    this.aprobados = this.listCandidates.filter(
-      c => c.estado == 'Aprobado'
-    ).length
-
-    this.descartados = this.listCandidates.filter(
-      c => c.estado == 'Rechazado'
-    ).length
-
-  }
-
-  viewCandidate(candidate:any){
-    this.selectedCandidate = candidate
   }
 
   changeStatus(status: string){
@@ -90,10 +80,30 @@ export class InicioComponent {
       if(index != -1){
         this.listCandidates[index].estado = status
       }
-
+      
       this.updateCounters()
     })
 
   }
+
+  updateCounters(){
+    this.enEvaluacion = this.listCandidates.filter(
+      c => c.estado == 'Pendiente'
+    ).length
+
+    this.enEntrevista = this.listCandidates.filter(
+      c => c.estado == 'Entrevista'
+    ).length
+
+    this.aprobados = this.listCandidates.filter(
+      c => c.estado == 'Aprobado'
+    ).length
+
+    this.descartados = this.listCandidates.filter(
+      c => c.estado == 'Rechazado'
+    ).length
+
+  }
+
 
 }

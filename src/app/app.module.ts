@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { EditCandidateComponent } from './components/edit-candidate/edit-candidate.component';
+import { NominaComponent } from './components/nomina/nomina.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { EditCandidateComponent } from './components/edit-candidate/edit-candida
     LoginComponent,
     HeaderComponent,
     InicioComponent,
-    EditCandidateComponent
+    EditCandidateComponent,
+    NominaComponent
   ],
   imports: [
     BrowserModule, 

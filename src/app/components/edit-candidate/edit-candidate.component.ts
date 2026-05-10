@@ -34,11 +34,11 @@ export class EditCandidateComponent {
         puntaje: this.data.puntaje,
         estado: this.data.estado
       })
-
     }
 
     updateCandidate(){
       const body = this.dataCandidates.value
+
       this.backend.updateCand(this.data.id, body).subscribe(data => {
         console.log(data)
         this.dialogRef.close(true)

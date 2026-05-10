@@ -20,6 +20,8 @@ export class CreateStudentsComponent {
       experiencia:['', Validators.required],
       puntaje:['', Validators.required],
       estado:['', Validators.required],
+      salario:['', Validators.required],
+      ajuste:['', Validators.required],
     })
   }
 
@@ -31,6 +33,8 @@ export class CreateStudentsComponent {
       experiencia: this.dataCandidates.get('experiencia')!.value,
       puntaje: this.dataCandidates.get('puntaje')!.value,
       estado: this.dataCandidates.get('estado')!.value,
+      salario: this.dataCandidates.get('salario')!.value,
+      ajuste: this.dataCandidates.get('ajuste')!.value,
     };
 
     if(data.puntaje > 100){

@@ -105,7 +105,7 @@
                   </span>
                 </td>
                 <td>
-                  <button class="btn btn-sm btn-outline-light">Ver</button>
+                  <button class="btn btn-sm btn-outline-light" (click)="viewCandidate(candidate)">Ver</button>
                   <button class="btn btn-sm btn-outline-light" (click)="editCandidate(candidate)">Editar</button>
                   <button class="btn btn-sm btn-outline-light" (click)="deleteCandidate(candidate.id)">Eliminar</button>
                 </td>
@@ -118,20 +118,11 @@
 
       <!-- DETAIL CARD -->
       <div class="col-md-4">
-
-        <div class="detail-card">
-
-          <h4 class="fw-bold">Detalle Juan Loaiza</h4>
-
-          <p class="text-secondary">
-            Juan@ejemplo.com · 1 año exp.
-          </p>
-
+        <div class="detail-card" *ngIf="selectedCandidate">
+          <h4 class="fw-bold">Detalle {{ selectedCandidate.nombre }}</h4>
+          <p class="text-secondary">{{ selectedCandidate.correo }}·{{ selectedCandidate.experiencia }} año(s) exp.</p>
           <div class="progress mb-3">
-            <div
-              class="progress-bar bg-success"
-              style="width: 88%">
-            </div>
+            <div class="progress-bar bg-success" [style.width.%]="selectedCandidate.puntaje"></div>
           </div>
 
           <ul class="list-unstyled">
@@ -141,29 +132,13 @@
             <li>✔ Antecedentes</li>
           </ul>
 
-          <textarea
-            class="form-control custom-input mt-3"
-            rows="4"
-          >
-Candidato con excelente dominio de Excel y SAP.
-          </textarea>
-
+          <textarea class="form-control custom-input mt-3" rows="4"> {{ selectedCandidate.descripcion || 'Sin descripción' }}</textarea>
           <div class="d-flex gap-2 mt-3">
-            <button class="btn btn-success w-100">
-              Aprobar
-            </button>
-
-            <button class="btn btn-danger w-100">
-              Descartar
-            </button>
+            <button class="btn btn-success w-100" (click)="changeStatus('Aprobado')">Aprobar</button>
+            <button class="btn btn-danger w-100" (click)="changeStatus('Rechazado')">Rechazar</button>
           </div>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
-
 </div>
