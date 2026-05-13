@@ -8,6 +8,10 @@ npm install
 
 ![Texto alternativo](/img/npm.png)
 
+```bash
+ng serve
+```
+
 ![Texto alternativo](/img/ngS.png)
 
 Cuando todo esté instalado usar el comando ng serve o en su forma corta ng s
