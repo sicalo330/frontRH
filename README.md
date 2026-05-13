@@ -5,7 +5,9 @@ Para compilar el proyecto de recursos humanos, primero debes ubicarte en la carp
 ```bash
 npm install
 ```
+
 ![Texto alternativo](/img/image.png)
 
-#Cuando todo esté instalado usar el comando ng serve o en su forma corta ng s
 
+Cuando todo esté instalado usar el comando ng serve o en su forma corta ng s
+Luego entrar a http://localhost:4200
