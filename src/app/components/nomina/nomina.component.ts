@@ -13,9 +13,10 @@ export class NominaComponent {
   searchText: string = ''
   listCandidates: any[] = []
   selectedCandidate: any = null
+  totalPagar:number = 0;
 
   enEvaluacion: number = 0
-  enEntrevista: number = 0
+  colaborador: number = 0
   aprobados: number = 0
   descartados: number = 0
 
@@ -24,9 +25,14 @@ export class NominaComponent {
     ngOnInit(): void {
       this.backend.getCandidate().subscribe(data => {
         this.listCandidates = data
-        console.log(data)
         this.selectedCandidate = this.listCandidates[0]
+        this.updateCounters()
+
+        this.listCandidates.forEach((element) => {
+          this.totalPagar += (element.salario - element.ajuste)
+        });
       })
+
     }
 
   filteredCandidates(){
@@ -91,8 +97,10 @@ export class NominaComponent {
       c => c.estado == 'Pendiente'
     ).length
 
-    this.enEntrevista = this.listCandidates.filter(
-      c => c.estado == 'Entrevista'
+    //Como no entendí lo de colaboradores, pues pensé en algo así como los candidatos que tengan eps Nueva EPS ya que
+    //Son colaboradores de la empresa ficticia jaja
+    this.colaborador = this.listCandidates.filter(
+      c => c.eps == 'Nueva EPS'
     ).length
 
     this.aprobados = this.listCandidates.filter(

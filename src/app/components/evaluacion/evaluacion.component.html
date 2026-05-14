@@ -15,7 +15,7 @@
       <div class="custom-card text-center">
         <div class="icon">⏳</div>
         <p class="card-label">Pendiente</p>
-        <h1 class="card-value">{{enEvaluacion}}</h1>
+        <h1 class="card-value">{{pendiente}}</h1>
       </div>
     </div>
 
@@ -23,7 +23,7 @@
       <div class="custom-card text-center">
         <div class="icon">📅</div>
         <p class="card-label">Próximas</p>
-        <h1 class="card-value">{{enEntrevista}}</h1>
+        <h1 class="card-value">{{proxima}}</h1>
       </div>
     </div>
 
@@ -31,7 +31,7 @@
       <div class="custom-card text-center">
         <div class="icon">🏆</div>
         <p class="card-label">Completas</p>
-        <h1 class="card-value">{{aprobados}}</h1>
+        <h1 class="card-value">{{completa}}</h1>
       </div>
     </div>
 
@@ -39,7 +39,7 @@
       <div class="custom-card text-center">
         <div class="icon">📈</div>
         <p class="card-label">En mejora</p>
-        <h1 class="card-value">{{descartados}}</h1>
+        <h1 class="card-value">{{aMejora}}</h1>
       </div>
     </div>
   </div>
@@ -78,7 +78,7 @@
                     <span class="badge rounded-pill px-3 py-2"
                         [ngClass]="{
                         'bg-primary': candidate.estado == 'Entrevista' || candidate.estado == 'Evaluando',
-                        'bg-warning text-dark': candidate.estado == 'Pendiente',
+                        'bg-warning text-dark': candidate.estado == 'Pendiente' || candidate.estado == 'Sin ARL',
                         'bg-success': candidate.estado == 'Aprobado' || candidate.estado == 'Completo',
                         'bg-danger': candidate.estado == 'Rechazado' || candidate.estado == 'A mejorar'
                         }">

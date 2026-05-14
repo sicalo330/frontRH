@@ -74,7 +74,7 @@
                       <span class="badge rounded-pill px-3 py-2"
                           [ngClass]="{
                           'bg-primary': candidate.estado == 'Entrevista' || candidate.estado == 'Evaluando',
-                          'bg-warning text-dark': candidate.estado == 'Pendiente',
+                          'bg-warning text-dark': candidate.estado == 'Pendiente' || candidate.estado == 'Sin ARL',
                           'bg-success': candidate.estado == 'Aprobado' || candidate.estado == 'Completo',
                           'bg-danger': candidate.estado == 'Rechazado' || candidate.estado == 'A mejorar'
                           }">

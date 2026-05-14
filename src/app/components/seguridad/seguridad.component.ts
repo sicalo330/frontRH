@@ -14,8 +14,8 @@ export class SeguridadComponent {
   listCandidates: any[] = []
   selectedCandidate: any = null
 
-  enEvaluacion: number = 0
-  enEntrevista: number = 0
+  completo: number = 0
+  sARL: number = 0
   aprobados: number = 0
   descartados: number = 0
 
@@ -88,21 +88,12 @@ export class SeguridadComponent {
   }
 
   updateCounters(){
-    this.enEvaluacion = this.listCandidates.filter(
-      c => c.estado == 'Pendiente'
+    this.completo = this.listCandidates.filter(
+      c => c.estado == 'Completo'
     ).length
 
-    this.enEntrevista = this.listCandidates.filter(
-      c => c.estado == 'Entrevista'
+    this.sARL = this.listCandidates.filter(
+      c => c.estado == 'Sin ARL'
     ).length
-
-    this.aprobados = this.listCandidates.filter(
-      c => c.estado == 'Aprobado'
-    ).length
-
-    this.descartados = this.listCandidates.filter(
-      c => c.estado == 'Rechazado'
-    ).length
-
   }
 }

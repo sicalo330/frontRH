@@ -14,10 +14,10 @@ export class EvaluacionComponent {
   listCandidates: any[] = []
   selectedCandidate: any = null
 
-  enEvaluacion: number = 0
-  enEntrevista: number = 0
-  aprobados: number = 0
-  descartados: number = 0
+  pendiente: number = 0
+  proxima: number = 0
+  completa: number = 0
+  aMejora: number = 0
 
     constructor(private router:Router, private backend:BackendService, public dialog: MatDialog){}
 
@@ -26,6 +26,7 @@ export class EvaluacionComponent {
         this.listCandidates = data
         console.log(data)
         this.selectedCandidate = this.listCandidates[0]
+        this.updateCounters()
       })
     }
 
@@ -87,20 +88,20 @@ export class EvaluacionComponent {
   }
 
   updateCounters(){
-    this.enEvaluacion = this.listCandidates.filter(
+    this.pendiente = this.listCandidates.filter(
       c => c.estado == 'Pendiente'
     ).length
 
-    this.enEntrevista = this.listCandidates.filter(
-      c => c.estado == 'Entrevista'
+    this.proxima = this.listCandidates.filter(
+      c => c.estado == 'Evaluando'
     ).length
 
-    this.aprobados = this.listCandidates.filter(
-      c => c.estado == 'Aprobado'
+    this.completa = this.listCandidates.filter(
+      c => c.estado == 'Completo'
     ).length
 
-    this.descartados = this.listCandidates.filter(
-      c => c.estado == 'Rechazado'
+    this.aMejora = this.listCandidates.filter(
+      c => c.estado == 'A mejorar'
     ).length
 
   }
